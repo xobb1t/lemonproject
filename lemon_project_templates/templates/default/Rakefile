@@ -1,0 +1,26 @@
+desc "remove pyc's and pyo's from project directory"
+task :clean do
+  sh 'find . -name "*.py[co]" -delete'
+end
+
+namespace :r do
+  desc "install project requirements"
+  task :install do
+    if File.exists? 'requirements.lock'
+      sh 'pip install -r requirements.lock'
+    else
+      Rake::Task['r:upgrade'].invoke
+    end
+  end
+
+  desc "upgrade project requirements ignoring lock"
+  task :upgrade do
+    sh 'pip install --upgrade -r requirements.txt'
+    Rake::Task['r:freeze'].invoke
+  end
+
+  desc "freeze project requirements"
+  task :freeze do
+    sh 'pip freeze --local -r requirements.txt > requirements.lock'
+  end
+end
