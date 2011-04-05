@@ -1,1 +1,1 @@
-recursive-include lemon_project_templates/templates *
+recursive-include lemonproject/templates *

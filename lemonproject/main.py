@@ -1,6 +1,6 @@
 import sys
 from optparse import OptionParser
-from lemon_project_templates import templates
+from lemonproject import templates
 
 
 available_templates = {}
