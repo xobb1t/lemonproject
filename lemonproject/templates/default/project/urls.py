@@ -12,7 +12,7 @@ metatags.autodiscover()
 sitemaps.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', include(extradmin.site.urls)),
 )
 
 if settings.DEBUG:
